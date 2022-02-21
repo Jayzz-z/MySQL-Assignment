@@ -282,10 +282,10 @@ select * from Questions;
 create table Associate_Status(
   Associate_Id varchar(20) ,
   Module_Id	varchar(20),
-  Batch_Id varchar(20),
-  Trainer_Id varchar(20),
-  Start_Date	varchar(20),
-  End_Date	varchar(20)
+  Start_Date varchar(20),
+  End_Date	varchar(20),
+  AFeedbackGiven varchar(20),
+  TFeedbackGiven varchar(20),
  
 );
 Insert into Associate_Status values
