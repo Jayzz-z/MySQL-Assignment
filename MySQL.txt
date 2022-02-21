@@ -1,0 +1,482 @@
+Table 1).
+
+CREATE TABLE Trainer_Info (
+  Trainer_Id varchar2(20) primary key,
+  Salutation varchar2(7),
+  Trainer_Name varchar2(30),
+  Trainer_Location varchar2(30),
+  Trainer_Track varchar2(15),
+  Trainer_Qualification varchar2(100),
+  Trainer_Experiance integer(11),
+  Trainer_Email varchar2 (100),
+  Trainer_Password varchar2 (20)
+);
+
+Table 2).
+
+create table Batch_Info(
+  Batch_Id	varchar2(20) primary key,
+  Batch_Owner	varchar2(30),
+  Batch_BU_Name	varchar2(30)
+);
+
+
+Table 3).
+
+create table Module_Info(
+  Module_Id	varchar2(20) primary key,
+  Module_Name	varchar2(40),
+  Module_Duration	Integer(11)
+);
+
+
+Table 4).
+
+create table Associate_Info(
+  Associate_Id	varchar2(20) primary key,
+  Salutation	varchar2(7),
+  Associate_Name varchar2(30),
+  Associate_Location	varchar2(30),
+  Associate_Track	varchar2(15),
+  Associate_Qualification	varchar2(200),
+  Associate_Email	varchar2(100),
+  Associate_Password varchar2(20)
+);
+
+Table 5).
+
+create table Questions(
+  Question_Id	varchar2(20) primary key,
+  Module_Id	varchar2(20),
+  Question_Text	varchar2(900)
+);
+
+Table 6).
+
+create table Associate_Status(
+  Associate_Id varchar2(20) ,
+  Module_Id	varchar2(20),
+  Batch_Id varchar2(20),
+  Trainer_Id varchar2(20),
+  Start_Date	varchar2(20),
+  End_Date	varchar2(20)
+ 
+);
+
+Table 7).
+
+create table Trainer_Feedback(
+  Trainer_Id	varchar2(20) primary key,
+  Question_Id	varchar2(20),
+  Batch_Id varchar2(20),
+  Module_Id	varchar2(20),
+  Trainer_Rating Integer(11)
+);
+
+Table 8).
+create table Associate_Feedback (
+  Associate_Id varchar2(20) primary key,
+  Question_Id	varchar2(20),
+  Module_Id	varchar2(20),
+  Associate_Rating Integer(11)
+);
+
+Table 9).
+create table Login_Details(
+  User_Id	varchar2(20) primary key,
+  User_Password	varchar2(20)
+);
+
+
+------------------------------------------------------------------------------------------------
+------------------------------------------ASSIGNMENT-2------------------------------------------
+------------------------------------------------------------------------------------------------
+
+a)
+
+Modify the table Associate_Status to include following two columns:
+Column Name: Batch_Id
+Details: Batch Id from batch_Info
+Data Types: Character
+Size: 20
+ALTER TABLE batch_info MODIFY Batch_Id CHARACTER(20)
+
+
+
+b)
+
+Column Name: Trainer_Id
+Details: Trainer Id from trainer_Info
+Data Types: Character
+Size: 20
+ALTER TABLE trainer_info MODIFY Trainer_Id CHARACTER(20)
+
+
+c)
+
+Modify two columns data types of the table Associate_Status as follow
+Start_Date
+Desired Type: Date
+End_Date
+Desired Type: Date
+Deliverables Expected:
+New Columns in batch_Info & trainer_Info & changed column data types
+ALTER TABLE associate_status MODIFY Start_Date Date, modify End_Date Date
+
+
+d)
+
+CREATE TABLE Trainer_Info (
+  Trainer_Id varchar(20),
+  Salutation varchar(30),
+  Trainer_Name varchar(30),
+  Trainer_Location varchar(30),
+  Trainer_Track varchar(15),
+  Trainer_Qualification varchar(100),
+  Trainer_Experiance integer(11),
+  Trainer_Email varchar(100),
+  Trainer_Password varchar(20)
+);
+
+
+---------------------------------------------------------------------------------------------------
+----------------------------------Insert Data into Tables------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+Insert into Trainer_Info Values
+('F001','Mr.','PANKAJ GHOSH','PUNE','JAVA','Bachelour of technology',12,'pankaj.Ghosh@alliance','fac1@123'),
+('F002','Mr.','SANJAY RADHAKRISHNAN ','Banglore','Dotnet','Bachelour of technology',10,'Sanjay@alliance','fac2@123'),
+('F003','Mr.','VIJAY MATHUR','Chennai','mainframe','Bachelour of technology',14,'Vijay@alliance','fac3@123'),
+('F004','Mr.','NANDINI NAIR','kolkata','JAVA','Master of Computer Applications',12,'Nandini@alliance','fac4@123'),
+('F005','Mr.','ANITHA PAREKH','Huderabad','Testing','Bachelour of technology',7,'Anitha@alliance','fac5@123'),
+('F006','Mr.','MANOJ AGRAWAL ','Mumbai','Testing','Bachelour of technology',9,'manoj@alliance','fac6@123'),
+('F007','Mr.','MEENA KULKARNI','Coiambatore','mainframe','Bachelour of technology',9,'Meena@alliance','fac7@123'),
+('F008','Mr.','SAGAR MENON ','Mumbai','CPP','Bachelour of technology',10,'Sagar@alliance','fac8@123'),
+('F009','Mr.','JAYDEEP KUMAR','NEEMUCH','JAVA','MCA',12,'abc@alliance','fac9@123');
+
+
+select*from Trainer_Info;
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+2.)
+
+create table Batch_Info(
+  Batch_Id	varchar(20) primary key,
+  Batch_Owner	varchar(30),
+  Batch_BU_Name	varchar(30)
+);
+
+Insert into Batch_Info values
+('B001','MRS.Swati Roy','MSP'),
+('B002','MRS.ARURNA K','LIFE SCIENCES'),
+('B003','MRS.RAJESH KRISHNAN','HEALTHCARE'),
+('B004','MRS.SACHIN SHETTY','COMMUNICATIONS'),
+('B005','MRS.RAMESH PATEL','MSP'),
+('B006','MRS.SUSAN CHERIAN','RETAIL & HOSPITALITY'),
+('B007','MRS.SAMPADA JAIN','MSP'),
+('B008','MRS.KAVITA REGE','BPO'),
+('B009','MR.RAVI SEJPAL','MSP');
+
+select* from Batch_Info;
+
+----------------------------------------------------------------------------------------------------------------------
+
+3.)
+
+create table Module_Info(
+  Module_Id	varchar(20) primary key,
+  Module_Name	varchar(40),
+  Module_Duration	Integer(11)
+);
+
+Insert into Module_Info values
+('O10SQL','Oracle 10g SQL' ,16),
+('O10PLSQL','Oracle 10g PL/SQL' ,16),
+('J2SE','Core Java SE 1.6',288),
+('J2EE','Advanced Java EE 1.6',80),
+('JAVAFX','JavaFX 2.1',80),
+('DOTNT4','.Net Framework 4.0' ,50),
+('SQL2008','MS SQl Server 2008',120),
+('MSBI08','MS BI Studio 2008',158),
+('SHRPNT','MS Share Point' ,80),
+('ANDRD4','Android 4.0',200),
+('EM001','Instructor',0),
+('EM002','Course Material',0),
+('EM003','Learning Effectiveness',0),
+('EM004','Environment',0),
+('EM005','Job Impact',0),
+('TM001','Attendees',0),
+('TM002','Course Material',0),
+('TM003','Environment',0);
+
+
+
+select* from Module_Info;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.)
+
+
+create table Associate_Info(
+  Associate_Id	varchar(20) primary key,
+  Salutation	varchar(7),
+  Associate_Name varchar(30),
+  Associate_Location	varchar(30),
+  Associate_Track	varchar(15),
+  Associate_Qualification	varchar(200),
+  Associate_Email	varchar(100),
+  Associate_Password varchar(20)
+);
+
+Insert into Associate_Info values
+
+('A001','Miss.','GAYATHRI NARAYANAN','Gurgaon','Java','Bachelor of Technology','Gayathri.Narayanan@hp.com','tne1@123'),
+('A002','Mrs.','RADHIKA MOHAN','Kerala','Java','Bachelor of Engineering In Information Technology','Radhika.Mohan@cognizant.com','tne2@123'),
+('A003','Mr.','KISHORE SRINIVAS','Chennai','Java','Bachelor of Engineering In Computers','Kishore.Srinivas@ibm.com','tne3@123'),
+('A004','Mr.','ANAND RANGANATHAN','Mumbai','DotNet','Master of Computer Applications','Anand.Ranganathan@finolex.com','tne4@123'),
+('A005','Miss.','LEELA MENON','Kerala','Mainframe','Bachelor of Engineering In Information Technology','Leela.Menon@microsoft.com','tne5@123'),
+('A006','Mrs.','ARTI KRISHNAN','Pune','Testing','Master of Computer Applications','Arti.Krishnan@cognizant.com','tne6@123'),
+('A007','Mr.','PRABHAKAR SHUNMUGHAM','Mumbai','Java','Bachelor of Technology','Prabhakar.Shunmugham@honda.com','tne7@123');
+
+select * from Associate_Info;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5.)
+
+
+create table Questions(
+  Question_Id	varchar(20) primary key,
+  Module_Id	varchar(20),
+  Question_Text	varchar(900)
+);
+Insert into Questions values
+
+('Q001','EM001','Instructor knowledgeable and able to handle all your queries'),
+('Q002','EM001','All the topics in a particular course handled by the trainer without any gaps or slippages'),
+('Q003','EM002','The course materials presentation, handson, etc. refered during the training are relevant and useful.'),
+('Q004','EM002','The Hands on session adequate enough to grasp the understanding of the topic.'),
+('Q005','EM002','The reference materials suggested for each module are adequate.'),
+('Q006','EM003','Knowledge and skills presented in this training are applicatible at your work'),
+('Q007','EM003','This training increases my proficiency level'),
+('Q008','EM004','The physical environment e.g. classroom space, air-conditioning was conducive to learning.'),
+('Q009','EM004','The software/hardware environment provided was sufficient for the purpose of the training.'),
+('Q010','EM005','This training will improve your job performance.'),
+('Q011','EM005','This training align with the business priorities and goals.'),
+('Q012','TM001','Participants were receptive and had attitude towards learning.'),
+('Q013','TM001','All participats gained the knowledge and the practical skills after this training.'),
+('Q014','TM002','The course materials presentation, handson, etc. available for the session covers the entire objectives of the course.'),
+('Q015','TM002','Complexity of the course is adequate for the particpate level.'),
+('Q016','TM002','Case study and practical demos helpful in understanding of the topic'),
+('Q017','TM003','The physical environment e.g. classroom space, air-conditioning was conducive to learning.'),
+('Q018','TM003','The software/hardware environment provided was adequate for the purpose of the training.');
+
+select * from Questions;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6.)  
+
+create table Associate_Status(
+  Associate_Id varchar(20) ,
+  Module_Id	varchar(20),
+  Batch_Id varchar(20),
+  Trainer_Id varchar(20),
+  Start_Date	varchar(20),
+  End_Date	varchar(20)
+ 
+);
+Insert into Associate_Status values
+
+('A001','O10SQL','B001','F001','2000-12-15','2000-12-25'),
+('A002','O10SQL','B001','F001','2000-12-15','2000-12-25'),
+('A003','O10SQL','B001','F001','2000-12-15','2000-12-25'),
+('A001','O10PLSQL','B002','F002','2001-2-1','2001-2-12'),
+('A002','O10PLSQL','B002','F002','2001-2-1','2001-2-12'),
+('A003','O10PLSQL','B002','F002','2001-2-1','2001-2-12'),
+('A001','J2SE','B003','F003','2002-8-20','2002-10-25'),
+('A002','J2SE','B003','F003','2002-8-20','2002-10-25'),
+('A001','J2EE','B004','F004','2005-12-1','2005-12-25'),
+('A002','J2EE','B004','F004','2005-12-1','2005-12-25'),
+('A003','J2EE','B004','F004','2005-12-1','2005-12-25'),
+('A004','J2EE','B004','F004','2005-12-1','2005-12-25'),
+('A005','JAVAFX','B005','F006','2005-12-4','2005-12-20'),
+('A006','JAVAFX','B005','F006','2005-12-4','2005-12-20'),
+('A006','SQL2008','B006','F007','2007-6-21','2007-6-28'),
+('A007','SQL2008','B006','F007','2007-6-21','2007-6-28'),
+('A002','MSBI08','B007','F006','2009-6-26','2009-6-29'),
+('A003','MSBI08','B007','F006','2009-6-26','2009-6-29'),
+('A004','MSBI08','B007','F006','2009-6-26','2009-6-29'),
+('A002','ANDRD4','B008','F008','2010-6-5','2010-6-28'),
+('A005','ANDRD4','B008','F005','2010-6-5','2010-6-28'),
+('A003','ANDRD4','B009','F005','2011-8-1','2011-8-20'),
+('A006','ANDRD4','B009','F005','2011-8-1','2011-8-20');
+
+select * from Associate_Status;
+
+------------------------------------------------------------------------------------------------
+-------------------------------------------Assignment-2.1--------------------------------
+------------------------------------------------------------------------------------------------
+
+a) Change the password of trainer F004 from fac4@123 to nn4@123
+Deliverables Expected:
+Updated password of trainer F004
+
+Query:
+UPDATE `trainer_info` SET `Trainer_Password`='[nn4@123]' WHERE Trainer_Id = F004;
+
+
+-----------------------------------------------------------------------------------------------
+
+
+b) Remove following record form associate_status table
+A003,J2EE, B004,F004,2005-12-1,2005-12-25
+Deliverables Expected:
+Removed record from associate status.
+
+Query:
+DELETE FROM associate_status WHERE Associate_Id='A003' && Module_Id='J2EE' && Batch_Id='B004' && Trainer_Id='F004';
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+c) Fetch first five trainers who have maximum years of experience & display there details.
+Deliverables Expected:
+Top five experience trainers
+SELECT Trainer_Id,Module_Id,Batch_Id,MAX(End_Date-Start_Date)
+FROM associate_status
+ORDER BY Associate_Id;
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+d) Begin transaction & insert below to records into Login_Details
+'U001' Admin1@123
+'U002' Admin2@123	
+Query:
+
+INSERT INTO `login_details`(`User_Id`, `User_Password`) VALUES 
+('U001',' Admin1@123'),
+('U002',' Admin2@123');
+
+------------------------------------------------------------------------------------------------------------------
+
+e) Perform rollback operation & verify whether any records are inserted in table or not.
+2 rows inserted. (Query took 0.0100 seconds.) [ROLLBACK occurred.]
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+f) Create a dummy user in database. Grant create & select table privilege to him/her.
+query:
+
+create user "<devil>" identified by "<royal>";
+grant create table to devil;
+grant select table to devil;
+
+
+
+Repeat the above all queries using login credentials of newly created user.
+Revoke the privilege assigned to this newly created user.
+Problem Statement:
+Remove table Login_Details from database.
+
+Query:
+
+revoke create table from devil;
+revoke select table from devil;
+
+
+
+---------------------------------------------------------------------------------------
+----------------------------------Assignment-4--------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+Problem Statement:
+Write a query to display trainer IDs for all associates whose names contain the letter 'i'. Note: Use sub-query to achieve this.
+
+Query:
+
+SELECT Trainer_Id
+  FROM associate_status
+  WHERE Associate_Id IN (SELECT Associate_Id
+                            FROM associate_info
+                            WHERE Associate_Name LIKE '%i%');
+
+Problem Statement:
+Write a query to display trainer IDs for all associates whose names do not contain the letter 'i'.
+Note: Use sub-query to achieve this.
+
+Query:
+
+SELECT Trainer_Id
+  FROM associate_status
+  WHERE Associate_Id NOT IN (SELECT Associate_Id
+                            FROM associate_info
+                            WHERE Associate_Name LIKE '%i%');
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Problem Statement:
+Write a query to pick up the maximum marks secured in the subject “EI05IP” and display the student name and registration number of the student who has secured it.
+
+Query:
+
+select Student_name, Registration_No, from Student_info where EI05IP =(select Max(EI05IP) from Student_info);
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Problem Statement:
+Write a query to display the student name and registration number of the student who has secured second highest marks in the subject El05lP subject.
+
+Query:
+
+select Student_name, Registration_No, from Student_group by salary 
+order by EI05IP  desc limit 1,1;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------Joins-------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Exercise 1
+
+Problem Statement:
+Write a query to display trainer_id and batch_id details in such a way that we get all possible combinations of trainer IDs and batch IDs.
+Hint: Use Trainer_Info and Batch_Info tables.
+
+Query:
+
+select trainer_info.trainer_id,batch_info.batch_id from trainer_info cross join  batch_info;
+
+-----------------------------------------------------------------------------------------------------------
+Problem Statement:
+Write a query to display the records from all columns of tables associate_status and batch_info, wherever the batch_id in the two tables matches.
+
+Query:
+
+select associate_status.,batch_info. from associate_status inner join 
+batch_info on associate_status.batch_id = batch_info.batch_id
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Problem Statement:
+Write a query to display the associate IDs of the associates tagged to trainers and all the trainer IDs irrespective of whether there are any associates tagged to them or not. Hint: Use associate_status and trainer_info tables.
+Note: Use Left Outer Join
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
